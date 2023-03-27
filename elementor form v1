@@ -1,0 +1,42 @@
+<style>
+.elementor-field-image img {
+    width: 150px;
+    height: 150px;
+    border: 1px solid transparent;
+    cursor: pointer;
+}
+.elementor-field-image img:hover {
+    border-color: gray;
+}
+.elementor-field-image img.selected {
+    border-color: black;
+}
+</style>
+<div class="elementor-field elementor-field-select elementor-form-field elementor-field-type-radio elementor-has-children elementor-field-group">
+    <input type="hidden" name="form_fields[field_61707fd]" value="">
+    <div class="elementor-field-content">
+        <div class="elementor-field-subgroup elementor-subgroup-inline elementor-field-image">
+            <img src="https://bwr-london.co.uk/wp-content/uploads/2023/02/IMG_0681-150x150.jpg" data-value="Platinum">
+            <img src="https://bwr-london.co.uk/wp-content/uploads/2023/02/IMG_0681-150x150.jpg" data-value="White Gold">
+            <img src="https://bwr-london.co.uk/wp-content/uploads/2023/02/IMG_0681-150x150.jpg" data-value="Rose Gold">
+            <img src="https://bwr-london.co.uk/wp-content/uploads/2023/02/IMG_0681-150x150.jpg" data-value="Yellow Gold">
+            <img src="https://bwr-london.co.uk/wp-content/uploads/2023/02/IMG_0681-150x150.jpg" data-value="Palladium">
+        </div>
+    </div>
+</div>
+
+<script>
+let selectedValue = "";
+document.querySelectorAll('.elementor-field-image img').forEach(function(img) {
+    img.addEventListener('click', function() {
+        if (selectedValue === this.getAttribute('data-value')) {
+            selectedValue = "";
+            this.classList.remove('selected');
+        } else {
+            selectedValue = this.getAttribute('data-value');
+            this.classList.add('selected');
+        }
+        document.querySelector('input[name="form_fields[field_61707fd]"]').value = selectedValue;
+    });
+});
+</script>
